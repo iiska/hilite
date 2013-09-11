@@ -5,6 +5,8 @@ from pygments import highlight
 from pygments.formatters import HtmlFormatter
 from pygments.lexers import guess_lexer
 
+import urllib
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -13,10 +15,11 @@ def highlight_file():
     if request.query_string == '':
         return redirect(url_for('static', filename='index.html'))
     # 2. retrieve url
-    code = 'printf("Hello %s!", world);'
+    f = urllib.urlopen(request.query_string)
+    code = f.read()
     # 3. syntax highlight with Pygments
     # 4. render
-    code = highlight(code, guess_lexer(code), HtmlFormatter(linenos=True, style="monokai"))
+    code = highlight(code, guess_lexer(code), HtmlFormatter(linenos=True))
     return render_template("highlight.html", code=code)
 
 if __name__ == '__main__':
