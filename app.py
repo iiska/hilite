@@ -16,7 +16,7 @@ def highlight_file():
         return redirect(url_for('static', filename='index.html'))
     # 2. retrieve url
     f = urllib.urlopen(request.query_string)
-    code = f.read()
+    code = f.read(1024*1024)
     # 3. syntax highlight with Pygments
     # 4. render
     code = highlight(code, guess_lexer(code), HtmlFormatter(linenos=True))
