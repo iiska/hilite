@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hilite</title>
+  </head>
+  <body>
+    <h1>Hilite</h1>
+
+    <p>Über simple web service for highlightin source code.</p>
+
+    <h2>Why?</h2>
+
+    <p>Render links on js error entries to point here with erronous
+    file and line number as parameters to get nicer output.</p>
+
+    <h2>Usage</h2>
+
+    <p>Links to use this service have following
+    schema: <span class="sample-url"></span></p>
+
+    <script src="js/jquery-2.0.3.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $(".sample-url").text(window.location.origin +
+          "/?http://example.com/my-file.js#line-123");
+      });
+    </script>
+  </body>
+</html>
