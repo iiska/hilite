@@ -19,7 +19,8 @@ def highlight_file():
     code = f.read(1024*1024)
     # 3. syntax highlight with Pygments
     # 4. render
-    code = highlight(code, guess_lexer(code), HtmlFormatter(linenos=True))
+    formatter = HtmlFormatter(linenos=True, lineanchors="line")
+    code = highlight(code, guess_lexer(code), formatter)
     return render_template("highlight.html", code=code)
 
 if __name__ == '__main__':
