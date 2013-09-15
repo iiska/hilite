@@ -1,0 +1,11 @@
+.highlight-line {
+    position: absolute;
+    height: 1em;
+    background-color: #000;
+    opacity: 0.2;
+    left: 0.8em;
+}
+
+td.linenos {
+    background-color: #ccc;
+}
